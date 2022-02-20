@@ -1,0 +1,2 @@
+INDEX VERSION 1.131+F:\PRAKSA\ATOS\GIT\AtosPraksa\PripremaPrakse DominikMajdandzic\.metadata\.plugins\org.eclipse.jdt.core
+3460880079.index
