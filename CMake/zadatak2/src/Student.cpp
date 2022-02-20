@@ -1,11 +1,11 @@
-#include "Student.h"
+#include "Student/Student.h"
 
-string Student: getName(){
+string Student::getName(){
     return studentName;
 }
-Student:Student(){}
-Student:~Student(){}
-Student:Student(string name){
+Student::Student(){}
+Student::~Student(){}
+Student::Student(string name){
     studentName = name;
 }
 ostream& operator<<(ostream& os, Student& student){

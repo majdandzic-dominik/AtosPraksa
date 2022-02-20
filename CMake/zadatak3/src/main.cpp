@@ -1,13 +1,9 @@
 #include <iostream>
 #include <cstring>
-#include <Professor.h>
-#include <Student.h>
+#include "Professor/Professor.h"
+#include "Student/Student.h"
 
 using namespace std;
-
-
-
-
 
 int main(){
     string name;
