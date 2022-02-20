@@ -1,0 +1,9 @@
+/home/doc/Desktop/AtosPraksa/CMake/zadatak7/build/CMakeFiles/rebuild_cache.dir
+/home/doc/Desktop/AtosPraksa/CMake/zadatak7/build/CMakeFiles/edit_cache.dir
+/home/doc/Desktop/AtosPraksa/CMake/zadatak7/build/CMakeFiles/zadatak7.dir
+/home/doc/Desktop/AtosPraksa/CMake/zadatak7/build/Student/CMakeFiles/rebuild_cache.dir
+/home/doc/Desktop/AtosPraksa/CMake/zadatak7/build/Student/CMakeFiles/edit_cache.dir
+/home/doc/Desktop/AtosPraksa/CMake/zadatak7/build/Student/CMakeFiles/Student.dir
+/home/doc/Desktop/AtosPraksa/CMake/zadatak7/build/Professor/CMakeFiles/rebuild_cache.dir
+/home/doc/Desktop/AtosPraksa/CMake/zadatak7/build/Professor/CMakeFiles/edit_cache.dir
+/home/doc/Desktop/AtosPraksa/CMake/zadatak7/build/Professor/CMakeFiles/Professor.dir
