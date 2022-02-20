@@ -1,0 +1,40 @@
+package hr.atos.praksa.dominikmajdandzic.zadatak15;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+
+public class FileReaderWriter
+{
+
+	public void writeWorkerToFile(Worker worker)
+	{
+		try
+		{
+			FileOutputStream f = new FileOutputStream(
+					System.getProperty("user.dir") + "\\workers\\" + worker.getOib() + ".txt");
+			ObjectOutputStream o = new ObjectOutputStream(f);
+
+			o.writeObject(worker);
+
+			o.close();
+			f.close();
+
+		} catch (FileNotFoundException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public Worker readWorkerFromFile(String oib)
+	b
+	
+	
+
+}

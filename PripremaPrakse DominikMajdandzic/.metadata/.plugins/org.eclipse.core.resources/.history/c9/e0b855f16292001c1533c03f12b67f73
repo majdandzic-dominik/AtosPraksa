@@ -1,0 +1,10 @@
+package hr.atos.praksa.dominikmajdandzic.zadatak15;
+
+public class FileReaderWriter
+{
+
+	public void writeObjectToFile(String folderName, String fileName)
+	
+	
+
+}
