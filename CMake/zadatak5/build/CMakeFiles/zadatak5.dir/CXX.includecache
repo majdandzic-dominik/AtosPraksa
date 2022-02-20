@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/Professor/Professor.h
+iostream
+-
+cstring
+-
+
+../include/Student/Student.h
+iostream
+-
+cstring
+-
+
+/home/doc/Desktop/AtosPraksa/CMake/zadatak5/src/Professor.cpp
+Professor/Professor.h
+/home/doc/Desktop/AtosPraksa/CMake/zadatak5/src/Professor/Professor.h
+
+/home/doc/Desktop/AtosPraksa/CMake/zadatak5/src/Student.cpp
+Student/Student.h
+/home/doc/Desktop/AtosPraksa/CMake/zadatak5/src/Student/Student.h
+
+/home/doc/Desktop/AtosPraksa/CMake/zadatak5/src/main.cpp
+iostream
+-
+cstring
+-
+Professor/Professor.h
+/home/doc/Desktop/AtosPraksa/CMake/zadatak5/src/Professor/Professor.h
+Student/Student.h
+/home/doc/Desktop/AtosPraksa/CMake/zadatak5/src/Student/Student.h
+

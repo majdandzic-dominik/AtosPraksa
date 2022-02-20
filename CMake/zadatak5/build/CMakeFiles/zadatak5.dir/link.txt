@@ -1,0 +1,1 @@
+/usr/bin/c++     CMakeFiles/zadatak5.dir/src/main.cpp.o CMakeFiles/zadatak5.dir/src/Professor.cpp.o CMakeFiles/zadatak5.dir/src/Student.cpp.o  -o zadatak5 

@@ -1,0 +1,3 @@
+/home/doc/Desktop/AtosPraksa/CMake/zadatak5/build/CMakeFiles/rebuild_cache.dir
+/home/doc/Desktop/AtosPraksa/CMake/zadatak5/build/CMakeFiles/edit_cache.dir
+/home/doc/Desktop/AtosPraksa/CMake/zadatak5/build/CMakeFiles/zadatak5.dir
