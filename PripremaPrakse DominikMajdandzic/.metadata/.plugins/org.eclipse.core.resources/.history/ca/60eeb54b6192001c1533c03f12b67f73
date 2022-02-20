@@ -1,0 +1,220 @@
+//15)	Za jednu tvrtku potrebno je napraviti demo aplikaciju u kojoj æe moæi raditi 
+//administraciju zaposlenika te njihbovih radnih zadataka. Ovo su im najbitniji podatci:
+//Zaposlenici
+//  ime
+//  prezime
+//  radno mjesto
+//  oib
+//
+//Zadaci
+//  naziv
+//  opis
+//  tip (bug, task)
+//  trenutni status (otvoren, zatvoren, u tijeku)
+//  kompleksnost (broj)
+//  potrošeno vrijeme (sati)
+//  poèetni datum i vrijeme
+//  završni datum i vrijeme
+//  (napomena, poèetak i završetak ne znaèe nužno da je potrošeno vrijeme njihova razlika)
+//Potrebno je omoguæiti administraciju na nekoliko razina tj. potrebno je definirati korisnièka 
+//prava korisnika aplikacije po grupama: "admin", "superuser" i "user" tako da se omoguæe sljedeæe akcije:
+//o	kreiranje zadataka i zaposlenika (admin, superuser)
+//o	izlistanje zadataka i zaposlenika (admin, superuser, user)
+//o	izmjena zadataka i zaposlenika (admin)
+//o	brisanje zadataka i zaposlenika (admin)
+//Naposljetku aplikacija mora omoguæiti kreiranje izvještaja:
+//o	po radnom mjestu tj. koliko radnika radi na pojedinom radnom mjestu
+//o	utrošeno vrijeme po osobi
+//o	najduže otvoren zadatak
+//Izvještaje mogu kreirati samo korisnici s admin ili superuser pravima.
+//Suèelje za komunikaciju s korisnicima neka bude konzola, a podaci se trebaju spremati u tekstualne datoteke ili bazu podataka po izboru.
+
+package hr.atos.praksa.dominikmajdandzic.zadatak15;
+
+import java.util.Scanner;
+
+public class Assignment15 {
+	private static Scanner sc = new Scanner(System.in);
+	private static int selector;
+	private static TaskController tc = new TaskController();
+	private static WorkerController wc = new WorkerController();
+	private static ReportGenerator rg = new ReportGenerator();
+
+	public static void main(String[] args) {
+
+		String workerLevel;
+
+		System.out.print("Unesite razinu korisnika [NORMAL | SUPERUSER | ADMIN]: ");
+		workerLevel = sc.nextLine();
+		while (!"NORMAL".equals(workerLevel.toUpperCase()) && !"SUPERUSER".equals(workerLevel.toUpperCase())
+				&& !"ADMIN".equals(workerLevel.toUpperCase())) {
+			System.out.print("Unešena razina korisnika ne postoji, pokušaj ponovno [NORMAL | SUPERUSER | ADMIN]: ");
+			workerLevel = sc.nextLine();
+		}
+
+		switch (workerLevel.toUpperCase()) {
+		case "NORMAL":
+			GeneralActionSelector(new Worker(null, null, null, null));
+			break;
+		case "SUPERUSER":
+			GeneralActionSelector(new Superuser(null, null, null, null));
+			break;
+		case "ADMIN":
+			GeneralActionSelector(new Administrator(null, null, null, null));
+			break;
+		default:
+			System.out.println("GREŠKA!");
+			break;
+		}
+	}
+
+	private static void GeneralActionSelector(Worker user) {
+		do {
+			System.out
+					.print("[1 = kontrola korisnika | 2 = kontrola zadataka | 3 = kreiranje izvještaja | 4 = izlaz]: ");
+			selector = sc.nextInt();
+			sc.nextLine();
+			switch (selector) {
+			case 1:
+				WorkerActionSelector(user);
+				break;
+			case 2:
+				TaskActionSelector(user);
+				break;
+			case 3:
+				ReportActionSelector(user);
+				break;
+			case 4:
+				System.exit(0);
+				break;
+			default:
+				System.out.println("Neispravni unos");
+				break;
+			}
+		} while (selector < 1 || selector > 4);
+	}
+
+	private static void WorkerActionSelector(Worker user) {
+		do {
+			System.out.println("Odaberite radnju");
+			System.out.println("1 = natrag");
+			System.out.println("2 = prikaži korisnike");
+			if (user instanceof Administrator || user instanceof Superuser)
+				System.out.println("3 = napravi novog korisnika");
+			if (user instanceof Administrator) {
+				System.out.println("4 = izmjeni korisnika");
+				System.out.println("5 = obriši korisnika");
+			}
+
+			selector = sc.nextInt();
+			sc.nextLine();
+			switch (selector) {
+			case 1:
+				GeneralActionSelector(user);
+				break;
+			case 2:
+				wc.listAllWorkers();
+				GeneralActionSelector(user);
+				break;
+			case 3:
+				wc.addNewWorker(user);
+				GeneralActionSelector(user);
+				break;
+			case 4:
+				System.out.print("Unesite OIB korisnika: ");
+				wc.updateWorker(sc.nextLine(), user);
+				GeneralActionSelector(user);
+				break;
+			case 5:
+				System.out.print("Unesite OIB korisnika: ");
+				wc.deleteWorker(sc.nextLine(), user);
+				GeneralActionSelector(user);
+				break;
+			default:
+				System.out.println("Neispravni unos");
+				break;
+			}
+		} while (selector < 1 || selector > 5);
+
+	}
+
+	private static void TaskActionSelector(Worker user) {
+		do {
+			System.out.println("Odaberite radnju");
+			System.out.println("1 = natrag");
+			System.out.println("2 = prikaži zadatke");
+			if (user instanceof Administrator || user instanceof Superuser)
+				System.out.println("3 = napravi novi zadatak");
+			if (user instanceof Administrator) {
+				System.out.println("4 = izmjeni zadatak");
+				System.out.println("5 = obriši zadatak");
+			}
+
+			selector = sc.nextInt();
+			sc.nextLine();
+			switch (selector) {
+			case 1:
+				GeneralActionSelector(user);
+				break;
+			case 2:
+				tc.listAllTasks();
+				GeneralActionSelector(user);
+				break;
+			case 3:
+				tc.addNewTask(user);
+				GeneralActionSelector(user);
+				break;
+			case 4:
+				System.out.print("Unesite naziv zadatka: ");
+				tc.updateTask(sc.nextLine(), user);
+				GeneralActionSelector(user);
+				break;
+			case 5:
+				System.out.print("Unesite naziv zadatka: ");
+				tc.deleteTask(sc.nextLine(), user);
+				GeneralActionSelector(user);
+				break;
+			default:
+				System.out.println("Neispravni unos");
+				break;
+			}
+		} while (selector < 1 || selector > 5);
+	}
+
+	private static void ReportActionSelector(Worker user) {
+		do {
+			System.out.println("Odaberite radnju");
+			System.out.println("1 = broj radnika po radnom mjestu");
+			System.out.println("2 = najstariji otvoreni zadatak");
+
+			selector = sc.nextInt();
+			sc.nextLine();
+			switch (selector) {
+			case 1:
+				GeneralActionSelector(user);
+				break;
+			case 2:
+				tc.listAllTasks();
+				GeneralActionSelector(user);
+				break;
+			case 3:
+				tc.addNewTask(user);
+				GeneralActionSelector(user);
+				break;
+			case 4:
+				System.out.print("Unesite naziv zadatka: ");
+				tc.updateTask(sc.nextLine(), user);
+				GeneralActionSelector(user);
+				break;
+			case 5:
+				System.out.print("Unesite naziv zadatka: ");
+				tc.deleteTask(sc.nextLine(), user);
+				GeneralActionSelector(user);
+				break;
+			default:
+				System.out.println("Neispravni unos");
+				break;
+			}
+		} while (selector < 1 || selector > 5);
+	}
+}
