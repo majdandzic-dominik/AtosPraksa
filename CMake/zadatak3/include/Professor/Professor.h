@@ -1,3 +1,5 @@
+#ifndef PROFESSOR_H
+#define PROFESSOR_H
 #include <iostream>
 #include <cstring>
 using namespace std;
@@ -12,3 +14,4 @@ class Professor {
         Professor(string name);
         friend ostream& operator<<(ostream& os, Professor& professor);
 };
+#endif
