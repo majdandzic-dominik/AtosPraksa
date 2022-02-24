@@ -8,3 +8,4 @@
 1645569146284	Rename method 'updateStatus'
 1645569162896	Rename method 'updateComplexity'
 1645569191376	Rename method 'increaseTimeSpent'
+1645704703119	Rename method 'listAllTxtFilesInFolder'
